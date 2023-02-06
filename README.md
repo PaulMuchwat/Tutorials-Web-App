@@ -1,17 +1,26 @@
-# flutter_academy
+# Online Learning Platform
 
-A new Flutter project.
+Web app built using the Flutter framework.
+
+## Features
+
+- Open-source
+
+## Prerequisites
+
+- Flutter SDK
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+1. Clone the repository
+2. Run `flutter pub get` to install dependencies
+3. Run the app on Chrome/Edge
 
-A few resources to get you started if this is your first Flutter project:
+The web app can be further customized to fit your use-case by modifying the code in the `main.dart` file and other files.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### Development by
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-# Tutorials-Web-App
+- Flutter - https://flutter.dev/
+
+Please open an issues on the repository if you find any bugs or if you would like to contribute.
+
