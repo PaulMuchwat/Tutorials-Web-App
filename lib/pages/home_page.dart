@@ -3,6 +3,7 @@ import 'package:flutter_academy/res/assets.dart';
 import 'package:flutter_academy/widgets/call_to_action.dart';
 import 'package:flutter_academy/widgets/course_card.dart';
 import 'package:flutter_academy/widgets/featured_section.dart';
+import 'package:flutter_academy/widgets/footer.dart';
 import 'package:flutter_academy/widgets/header.dart';
 
 class HomePage extends StatelessWidget {
@@ -83,6 +84,7 @@ class HomePage extends StatelessWidget {
               onActionPressed: () {},
             ),
           ),
+          const Footer(),
         ],
       ),
     );
