@@ -8,8 +8,11 @@ class FeaturedSection extends StatelessWidget {
     required this.description,
     required this.buttonLabel,
     required this.onActionPressed,
+    this.imageLeft = true,
   }) : super(key: key);
+
   final String image;
+  final bool imageLeft;
   final String title;
   final String description;
   final String buttonLabel;
@@ -22,30 +25,47 @@ class FeaturedSection extends StatelessWidget {
       padding: const EdgeInsets.all(32.0),
       child: Row(
         children: [
-          Expanded(
-            child: Image.asset(
-              image,
-              height: 450,
+          if (imageLeft)
+            Expanded(
+              child: Image.asset(
+                image,
+                height: 450,
+              ),
             ),
-          ),
           const SizedBox(width: 20.0),
           Expanded(
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Text(
                   title,
                   style: Theme.of(context).textTheme.displaySmall,
                 ),
                 const SizedBox(height: 20.0),
-                Text(description),
-                const SizedBox(height: 10.0),
-                ElevatedButton(
-                  onPressed: onActionPressed,
-                  child: Text(buttonLabel),
+                Text(
+                  description,
+                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                        fontSize: 18.0,
+                      ),
+                ),
+                const SizedBox(height: 20.0),
+                Center(
+                  child: ElevatedButton(
+                    onPressed: onActionPressed,
+                    child: Text(buttonLabel),
+                  ),
                 )
               ],
             ),
-          )
+          ),
+          const SizedBox(width: 20.0),
+          if (!imageLeft)
+            Expanded(
+              child: Image.asset(
+                image,
+                height: 450,
+              ),
+            ),
         ],
       ),
     );

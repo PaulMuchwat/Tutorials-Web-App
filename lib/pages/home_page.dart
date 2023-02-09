@@ -61,7 +61,7 @@ class HomePage extends StatelessWidget {
           ),
           Center(
             child: FeaturedSection(
-              // imageLeft: false,
+              imageLeft: false,
               image: Assets.instructor,
               title: "Transform your life through education",
               description:
