@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_academy/res/assets.dart';
+import 'package:flutter_academy/widgets/call_to_action.dart';
 import 'package:flutter_academy/widgets/course_card.dart';
 import 'package:flutter_academy/widgets/featured_section.dart';
 import 'package:flutter_academy/widgets/header.dart';
@@ -67,6 +68,18 @@ class HomePage extends StatelessWidget {
               description:
                   "Education changes your life beyond your imagination. Education enables you to achieve your dreams.",
               buttonLabel: "Start learning",
+              onActionPressed: () {},
+            ),
+          ),
+          const CallToAction(),
+          Center(
+            child: FeaturedSection(
+              imageLeft: false,
+              image: Assets.instructor,
+              title: "Know your instructors",
+              description:
+                  "Know your instructors. We have chosen the best of them to give you highest quality courses.",
+              buttonLabel: "Browse",
               onActionPressed: () {},
             ),
           ),
