@@ -17,21 +17,28 @@ class CourseCard extends StatelessWidget {
     return SizedBox(
       width: 350.0,
       child: Card(
+        clipBehavior: Clip.antiAlias,
         child: InkWell(
           onTap: onActionPressed,
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Image.asset(
                 image,
-                height: 250,
+                height: 200,
+                fit: BoxFit.cover,
               ),
-              const SizedBox(height: 10.0),
-              Text(
-                title,
-                style: Theme.of(context).textTheme.headlineMedium,
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Text(
+                  title,
+                  style: Theme.of(context).textTheme.headlineMedium,
+                ),
               ),
-              const SizedBox(height: 10.0),
-              Text(description)
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Text(description),
+              )
             ],
           ),
         ),
