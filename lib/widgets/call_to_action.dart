@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class CallToAction extends StatelessWidget {
@@ -23,7 +24,9 @@ class CallToAction extends StatelessWidget {
                 fixedSize: const Size(180, 70),
               ),
               onPressed: () {
-                print("register");
+                if (kDebugMode) {
+                  print("register");
+                }
               },
               child: const Text("Get Started"),
             )

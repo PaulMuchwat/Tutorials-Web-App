@@ -20,7 +20,7 @@ class Footer extends StatelessWidget {
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
+                    children: const [
                       FooterLink("Home"),
                       FooterLink("About"),
                       FooterLink("Download Apps"),
@@ -31,7 +31,7 @@ class Footer extends StatelessWidget {
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
+                    children: const [
                       FooterLink("Blog"),
                       FooterLink("Help and Support"),
                       FooterLink("Join Us"),
@@ -41,7 +41,7 @@ class Footer extends StatelessWidget {
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
+                    children: const [
                       FooterLink("Terms"),
                       FooterLink("Privacy Policy"),
                     ],
@@ -91,7 +91,7 @@ class FooterLink extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: Text(
         text,
-        style: Theme.of(context).textTheme.bodyText1?.copyWith(
+        style: Theme.of(context).textTheme.bodyLarge?.copyWith(
               color: Colors.white,
               fontWeight: FontWeight.w500,
             ),
