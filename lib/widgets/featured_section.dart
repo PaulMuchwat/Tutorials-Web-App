@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_academy/res/responsive.dart';
 
 class FeaturedSection extends StatelessWidget {
   const FeaturedSection({
@@ -20,10 +21,12 @@ class FeaturedSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
     return Container(
-      width: 1340,
+      height: width > ScreenSizes.md ? null : 600,
       padding: const EdgeInsets.all(32.0),
-      child: Row(
+      child: Flex(
+        direction: getAxis(width),
         children: [
           if (imageLeft)
             Expanded(
