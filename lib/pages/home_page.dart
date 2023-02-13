@@ -1,5 +1,7 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_academy/res/assets.dart';
+import 'package:flutter_academy/res/responsive.dart';
 import 'package:flutter_academy/widgets/call_to_action.dart';
 import 'package:flutter_academy/widgets/course_card.dart';
 import 'package:flutter_academy/widgets/featured_section.dart';
@@ -17,6 +19,40 @@ class HomePage extends StatelessWidget {
         children: <Widget>[
           AppBar(
             title: const Text('Flutter Academy'),
+            elevation: kIsWeb ? 0 : null,
+            centerTitle: kIsWeb ? false : null,
+            actions: (MediaQuery.of(context).size.width <= ScreenSizes.md)
+                ? null
+                : [
+                    TextButton(
+                      style: TextButton.styleFrom(
+                        foregroundColor: Colors.white,
+                      ),
+                      onPressed: () {},
+                      child: const Text("Home"),
+                    ),
+                    TextButton(
+                      style: TextButton.styleFrom(
+                        foregroundColor: Colors.white,
+                      ),
+                      onPressed: () {},
+                      child: const Text("Courses"),
+                    ),
+                    TextButton(
+                      style: TextButton.styleFrom(
+                        foregroundColor: Colors.white,
+                      ),
+                      onPressed: () {},
+                      child: const Text("About"),
+                    ),
+                    TextButton(
+                      style: TextButton.styleFrom(
+                        foregroundColor: Colors.white,
+                      ),
+                      onPressed: () {},
+                      child: const Text("Contact"),
+                    ),
+                  ],
           ),
           const Header(),
           const SizedBox(height: 40.0),
