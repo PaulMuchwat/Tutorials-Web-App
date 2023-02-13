@@ -54,6 +54,12 @@ class FeaturedSection extends StatelessWidget {
                 const SizedBox(height: 20.0),
                 Center(
                   child: ElevatedButton(
+                    // style: ElevatedButton.styleFrom(
+                    //   fixedSize:
+                    //       MediaQuery.of(context).size.width > ScreenSizes.md
+                    //           ? const Size(120, 50)
+                    //           : const Size(120, 60),
+                    // ),
                     onPressed: onActionPressed,
                     child: Text(buttonLabel),
                   ),
