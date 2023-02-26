@@ -12,8 +12,8 @@ class FeaturedSection extends StatelessWidget {
     this.imageLeft = true,
   }) : super(key: key);
 
-  final String image;
   final bool imageLeft;
+  final String image;
   final String title;
   final String description;
   final String buttonLabel;
@@ -28,14 +28,15 @@ class FeaturedSection extends StatelessWidget {
       child: Flex(
         direction: getAxis(width),
         children: [
-          if (imageLeft)
+          if (imageLeft || width <= ScreenSizes.md) ...[
             Expanded(
               child: Image.asset(
                 image,
-                height: 450,
+                fit: BoxFit.cover,
               ),
             ),
-          const SizedBox(width: 20.0),
+            const SizedBox(width: 20.0),
+          ],
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -43,6 +44,9 @@ class FeaturedSection extends StatelessWidget {
                 Text(
                   title,
                   style: Theme.of(context).textTheme.displaySmall,
+                  textAlign: width <= ScreenSizes.md
+                      ? TextAlign.center
+                      : TextAlign.start,
                 ),
                 const SizedBox(height: 20.0),
                 Text(
@@ -50,16 +54,13 @@ class FeaturedSection extends StatelessWidget {
                   style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                         fontSize: 18.0,
                       ),
+                  textAlign: width <= ScreenSizes.md
+                      ? TextAlign.center
+                      : TextAlign.start,
                 ),
                 const SizedBox(height: 20.0),
                 Center(
                   child: ElevatedButton(
-                    // style: ElevatedButton.styleFrom(
-                    //   fixedSize:
-                    //       MediaQuery.of(context).size.width > ScreenSizes.md
-                    //           ? const Size(120, 50)
-                    //           : const Size(120, 60),
-                    // ),
                     onPressed: onActionPressed,
                     child: Text(buttonLabel),
                   ),
@@ -67,14 +68,15 @@ class FeaturedSection extends StatelessWidget {
               ],
             ),
           ),
-          const SizedBox(width: 20.0),
-          if (!imageLeft)
+          if (!imageLeft && width > ScreenSizes.md) ...[
+            const SizedBox(width: 20.0),
             Expanded(
               child: Image.asset(
                 image,
                 height: 450,
               ),
             ),
+          ],
         ],
       ),
     );

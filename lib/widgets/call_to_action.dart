@@ -18,13 +18,14 @@ class CallToAction extends StatelessWidget {
             Text(
               "Ready to Begin Learning",
               style: Theme.of(context).textTheme.displayMedium,
+              textAlign: TextAlign.center,
             ),
             const SizedBox(height: 20.0),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                 fixedSize: MediaQuery.of(context).size.width > ScreenSizes.md
                     ? const Size(180, 50)
-                    : const Size(180, 60),
+                    : const Size(180, 70),
               ),
               onPressed: () {
                 if (kDebugMode) {
