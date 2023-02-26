@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_academy/res/assets.dart';
 import 'package:flutter_academy/res/responsive.dart';
@@ -7,6 +6,7 @@ import 'package:flutter_academy/widgets/course_card.dart';
 import 'package:flutter_academy/widgets/featured_section.dart';
 import 'package:flutter_academy/widgets/footer.dart';
 import 'package:flutter_academy/widgets/header.dart';
+import 'package:flutter_academy/widgets/top_nav.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -17,43 +17,7 @@ class HomePage extends StatelessWidget {
       body: ListView(
         padding: const EdgeInsets.all(16.0),
         children: <Widget>[
-          AppBar(
-            title: const Text('Flutter Academy'),
-            elevation: kIsWeb ? 0 : null,
-            centerTitle: kIsWeb ? false : null,
-            actions: (MediaQuery.of(context).size.width <= ScreenSizes.md)
-                ? null
-                : [
-                    TextButton(
-                      style: TextButton.styleFrom(
-                        foregroundColor: Colors.white,
-                      ),
-                      onPressed: () {},
-                      child: const Text("Home"),
-                    ),
-                    TextButton(
-                      style: TextButton.styleFrom(
-                        foregroundColor: Colors.white,
-                      ),
-                      onPressed: () {},
-                      child: const Text("Courses"),
-                    ),
-                    TextButton(
-                      style: TextButton.styleFrom(
-                        foregroundColor: Colors.white,
-                      ),
-                      onPressed: () {},
-                      child: const Text("About"),
-                    ),
-                    TextButton(
-                      style: TextButton.styleFrom(
-                        foregroundColor: Colors.white,
-                      ),
-                      onPressed: () {},
-                      child: const Text("Contact"),
-                    ),
-                  ],
-          ),
+          const TopNav(),
           const Header(),
           const SizedBox(height: 40.0),
           Padding(
