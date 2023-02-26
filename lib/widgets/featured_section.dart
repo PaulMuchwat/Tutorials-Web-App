@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_academy/res/responsive.dart';
+import 'package:flutter_academy/widgets/responsive_gap.dart';
 
 class FeaturedSection extends StatelessWidget {
   const FeaturedSection({
@@ -35,7 +36,7 @@ class FeaturedSection extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
             ),
-            const SizedBox(width: 20.0),
+            const ResponsiveGap(gap: 20.0),
           ],
           Expanded(
             child: Column(
@@ -69,7 +70,7 @@ class FeaturedSection extends StatelessWidget {
             ),
           ),
           if (!imageLeft && width > ScreenSizes.md) ...[
-            const SizedBox(width: 20.0),
+            const ResponsiveGap(gap: 20.0),
             Expanded(
               child: Image.asset(
                 image,
