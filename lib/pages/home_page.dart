@@ -7,6 +7,7 @@ import 'package:flutter_academy/widgets/featured_section.dart';
 import 'package:flutter_academy/widgets/footer.dart';
 import 'package:flutter_academy/widgets/header.dart';
 import 'package:flutter_academy/widgets/top_nav.dart';
+import 'package:flutter_academy/widgets/drawer_nav.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -89,39 +90,7 @@ class HomePage extends StatelessWidget {
       ),
       drawer: MediaQuery.of(context).size.width > ScreenSizes.md
           ? null
-          : Drawer(
-              child: ListView(
-                children: [
-                  Container(
-                    color: Theme.of(context).primaryColor,
-                    padding: const EdgeInsets.all(16.0),
-                    child: Text(
-                      "Flutter Academy",
-                      style: Theme.of(context)
-                          .textTheme
-                          .titleLarge
-                          ?.copyWith(color: Colors.white),
-                    ),
-                  ),
-                  ListTile(
-                    title: const Text("Home"),
-                    onTap: () {},
-                  ),
-                  ListTile(
-                    title: const Text("Courses"),
-                    onTap: () {},
-                  ),
-                  ListTile(
-                    title: const Text("About"),
-                    onTap: () {},
-                  ),
-                  ListTile(
-                    title: const Text("Contact"),
-                    onTap: () {},
-                  ),
-                ],
-              ),
-            ),
+          : const DrawerNav(),
     );
   }
 }
