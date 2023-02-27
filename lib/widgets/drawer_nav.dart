@@ -21,19 +21,27 @@ class DrawerNav extends StatelessWidget {
           ),
           ListTile(
             title: const Text("Home"),
-            onTap: () {},
+            onTap: () {
+              Navigator.of(context).pushNamed('/');
+            },
           ),
           ListTile(
             title: const Text("Courses"),
-            onTap: () {},
+            onTap: () {
+              Navigator.of(context).pushNamed('/courses');
+            },
           ),
           ListTile(
             title: const Text("About"),
-            onTap: () {},
+            onTap: () {
+              Navigator.of(context).pushNamed('/about');
+            },
           ),
           ListTile(
             title: const Text("Contact"),
-            onTap: () {},
+            onTap: () {
+              Navigator.of(context).pushNamed('/contact');
+            },
           ),
         ],
       ),
