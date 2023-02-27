@@ -18,36 +18,28 @@ class TopNav extends StatelessWidget {
                 style: TextButton.styleFrom(
                   foregroundColor: Colors.white,
                 ),
-                onPressed: () {
-                  Navigator.of(context).pushNamed("/");
-                },
+                onPressed: () => Navigator.pushNamed(context, '/'),
                 child: const Text("Home"),
               ),
               TextButton(
                 style: TextButton.styleFrom(
                   foregroundColor: Colors.white,
                 ),
-                onPressed: () {
-                  Navigator.of(context).pushNamed("courses");
-                },
+                onPressed: () => Navigator.pushNamed(context, '/courses'),
                 child: const Text("Courses"),
               ),
               TextButton(
                 style: TextButton.styleFrom(
                   foregroundColor: Colors.white,
                 ),
-                onPressed: () {
-                  Navigator.of(context).pushNamed("about");
-                },
+                onPressed: () => Navigator.pushNamed(context, '/about'),
                 child: const Text("About"),
               ),
               TextButton(
                 style: TextButton.styleFrom(
                   foregroundColor: Colors.white,
                 ),
-                onPressed: () {
-                  Navigator.of(context).pushNamed("contact");
-                },
+                onPressed: () => Navigator.pushNamed(context, '/contact'),
                 child: const Text("Contact"),
               ),
             ],
