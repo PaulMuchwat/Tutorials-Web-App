@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_academy/main.dart';
 
 class DrawerNav extends StatelessWidget {
   const DrawerNav({Key? key}) : super(key: key);
@@ -22,25 +23,25 @@ class DrawerNav extends StatelessWidget {
           ListTile(
             title: const Text("Home"),
             onTap: () {
-              Navigator.of(context).pushNamed('/');
+              routerDelegate.go('/');
             },
           ),
           ListTile(
             title: const Text("Courses"),
             onTap: () {
-              Navigator.of(context).pushNamed('/courses');
+              routerDelegate.go('/courses');
             },
           ),
           ListTile(
             title: const Text("About"),
             onTap: () {
-              Navigator.of(context).pushNamed('/about');
+              routerDelegate.go('/about');
             },
           ),
           ListTile(
             title: const Text("Contact"),
             onTap: () {
-              Navigator.of(context).pushNamed('/contact');
+              routerDelegate.go('/contact');
             },
           ),
         ],
