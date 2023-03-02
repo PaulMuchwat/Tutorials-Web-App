@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_academy/main.dart';
 import 'package:flutter_academy/res/responsive.dart';
 
 class TopNav extends StatelessWidget {
@@ -18,28 +19,36 @@ class TopNav extends StatelessWidget {
                 style: TextButton.styleFrom(
                   foregroundColor: Colors.white,
                 ),
-                onPressed: () => Navigator.pushNamed(context, '/'),
+                onPressed: () {
+                  routerDelegate.go('/');
+                },
                 child: const Text("Home"),
               ),
               TextButton(
                 style: TextButton.styleFrom(
                   foregroundColor: Colors.white,
                 ),
-                onPressed: () => Navigator.pushNamed(context, '/courses'),
+                onPressed: () {
+                  routerDelegate.go('/courses');
+                },
                 child: const Text("Courses"),
               ),
               TextButton(
                 style: TextButton.styleFrom(
                   foregroundColor: Colors.white,
                 ),
-                onPressed: () => Navigator.pushNamed(context, '/about'),
+                onPressed: () {
+                  routerDelegate.go('/about');
+                },
                 child: const Text("About"),
               ),
               TextButton(
                 style: TextButton.styleFrom(
                   foregroundColor: Colors.white,
                 ),
-                onPressed: () => Navigator.pushNamed(context, '/contact'),
+                onPressed: () {
+                  routerDelegate.go('/contact');
+                },
                 child: const Text("Contact"),
               ),
             ],

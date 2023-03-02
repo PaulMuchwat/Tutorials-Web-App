@@ -1,47 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_academy/pages/about_page.dart';
-import 'package:flutter_academy/pages/home_page.dart';
+import 'package:flutter_academy/routes/app_route_parser.dart';
+import 'package:flutter_academy/routes/router_delegate.dart';
 
 void main() {
   runApp(const MyApp());
 }
+
+final routerDelegate = AppRouterDelegate();
+final _routeParser = AppRouteInformationParser();
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      onGenerateRoute: (settings) {
-        return MaterialPageRoute(
-          builder: (_) {
-            switch (settings.name) {
-              case '/':
-                return HomePage();
-              case '/about':
-                return AboutPage();
-              case '/contact':
-                return ContactPage();
-              case '/courses':
-                return CoursesPage();
-              default:
-                final pathSegments = Uri.parse(settings.name!).pathSegments;
-                print(pathSegments);
-                if (pathSegments.length == 2 && pathSegments[0] == 'courses') {
-                  final courseId = int.parse(pathSegments[1]);
-                  return CourseDetailsPage(courseId: courseId);
-                }
-                return Error404Page();
-            }
-          },
-          settings: settings,
-        );
-      },
+      routerDelegate: routerDelegate,
+      routeInformationParser: _routeParser,
     );
   }
 }
