@@ -5,8 +5,12 @@ import 'package:flutter_academy/app/pages/about.pages.dart';
 import 'package:flutter_academy/app/pages/contact.pages.dart';
 import 'package:flutter_academy/app/pages/course_details.pages.dart';
 import 'package:flutter_academy/app/pages/courses.pages.dart';
+import 'package:flutter_academy/app/pages/dashboard.page.dart';
 import 'package:flutter_academy/app/pages/error_404.pages.dart';
 import 'package:flutter_academy/app/pages/home.pages.dart';
+import 'package:flutter_academy/app/pages/login.page.dart';
+import 'package:flutter_academy/app/view_models/auth.vm.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class AppRouterDelegate extends RouterDelegate<Uri>
     with ChangeNotifier, PopNavigatorRouterDelegateMixin<Uri> {
@@ -22,25 +26,27 @@ class AppRouterDelegate extends RouterDelegate<Uri>
 
   @override
   Widget build(BuildContext context) {
-    final pages = _getRoutes(_path);
-    return Navigator(
-      key: navigatorKey,
-      pages: pages,
-      onPopPage: (route, result) {
-        if (!route.didPop(result)) {
-          return false;
-        }
+    return Consumer(builder: (context, ref, child) {
+      final pages = _getRoutes(_path, ref.watch(authVM));
+      return Navigator(
+        key: navigatorKey,
+        pages: pages,
+        onPopPage: (route, result) {
+          if (!route.didPop(result)) {
+            return false;
+          }
 
-        if (pages.isNotEmpty) {
-          _path = _path.replace(
-              pathSegments: _path.pathSegments
-                  .getRange(0, _path.pathSegments.length - 1));
-          _safeNotifyListeners();
-          return true;
-        }
-        return false;
-      },
-    );
+          if (pages.isNotEmpty) {
+            _path = _path.replace(
+                pathSegments: _path.pathSegments
+                    .getRange(0, _path.pathSegments.length - 1));
+            _safeNotifyListeners();
+            return true;
+          }
+          return false;
+        },
+      );
+    });
   }
 
   @override
@@ -52,11 +58,17 @@ class AppRouterDelegate extends RouterDelegate<Uri>
     _safeNotifyListeners();
   }
 
-  List<Page> _getRoutes(Uri path) {
-    final pages = [
-      const MaterialPage(child: HomePage(), key: ValueKey('home')),
-    ];
-    if (path.pathSegments.isEmpty) {
+  List<Page> _getRoutes(Uri path, AuthVM authVM) {
+    final pages = <Page>[];
+    if (authVM.isLoggedIn) {
+      pages.add(
+          const MaterialPage(child: DashboardPage(), key: ValueKey('home')));
+    } else {
+      pages.add(const MaterialPage(child: HomePage(), key: ValueKey('home')));
+    }
+
+    // ignore: prefer_is_empty
+    if (path.pathSegments.length == 0) {
       return pages;
     }
     switch (path.pathSegments[0]) {
@@ -78,6 +90,16 @@ class AppRouterDelegate extends RouterDelegate<Uri>
           child: CoursesPage(),
         ));
         break;
+      case 'login':
+        if (authVM.isLoggedIn) {
+          go('/');
+          break;
+        }
+        pages.add(const MaterialPage(
+          key: ValueKey('login'),
+          child: LoginPage(),
+        ));
+        break;
       default:
         pages.add(
             const MaterialPage(child: Error404Page(), key: ValueKey('error')));
@@ -89,7 +111,9 @@ class AppRouterDelegate extends RouterDelegate<Uri>
           MaterialPage(
             key: ValueKey('course.${path.pathSegments[1]}'),
             child: CourseDetailsPage(
-              courseId: path.pathSegments[1],
+              courseId: int.parse(
+                path.pathSegments[1],
+              ),
             ),
           ),
         );

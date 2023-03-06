@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_academy/app/routes/app_route_parser.router.dart';
 import 'package:flutter_academy/app/routes/router_delegate.router.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(ProviderScope(child: MyApp()));
 }
 
 final routerDelegate = AppRouterDelegate();
-final _routeParser = AppRouteInformationParser();
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({super.key});
+
+  final _routeParser = AppRouteInformationParser();
 
   @override
   Widget build(BuildContext context) {
