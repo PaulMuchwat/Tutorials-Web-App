@@ -3,8 +3,11 @@ import 'package:flutter_academy/app/routes/app_route_parser.router.dart';
 import 'package:flutter_academy/app/routes/router_delegate.router.dart';
 import 'package:flutter_academy/app/view_models/theme_mode.vm.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Hive.initFlutter();
   runApp(ProviderScope(child: MyApp()));
 }
 
