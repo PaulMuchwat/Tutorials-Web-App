@@ -9,6 +9,7 @@ import 'package:flutter_academy/app/pages/dashboard.page.dart';
 import 'package:flutter_academy/app/pages/error_404.pages.dart';
 import 'package:flutter_academy/app/pages/home.pages.dart';
 import 'package:flutter_academy/app/pages/login.page.dart';
+import 'package:flutter_academy/app/pages/watchlist.page.dart';
 import 'package:flutter_academy/app/view_models/auth.vm.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -88,6 +89,12 @@ class AppRouterDelegate extends RouterDelegate<Uri>
         pages.add(const MaterialPage(
           key: ValueKey('courses'),
           child: CoursesPage(),
+        ));
+        break;
+      case 'watchlist':
+        pages.add(const MaterialPage(
+          child: WatchlistPage(),
+          key: ValueKey('watchlist'),
         ));
         break;
       case 'login':

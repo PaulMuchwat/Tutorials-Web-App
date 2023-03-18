@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_academy/app/res/assets.res.dart';
 import 'package:flutter_academy/app/res/responsive.res.dart';
+import 'package:flutter_academy/app/views/courses.view.dart';
 import 'package:flutter_academy/app/widgets/call_to_action.widget.dart';
-import 'package:flutter_academy/app/widgets/course_card.widget.dart';
 import 'package:flutter_academy/app/widgets/featured_section.widget.dart';
 import 'package:flutter_academy/app/widgets/footer.widget.dart';
 import 'package:flutter_academy/app/widgets/header.widget.dart';
@@ -27,30 +27,9 @@ class HomePage extends StatelessWidget {
                 style: Theme.of(context).textTheme.displaySmall),
           ),
           const SizedBox(height: 10.0),
-          SizedBox(
-            height: 450,
-            child: ListView(
-              scrollDirection: Axis.horizontal,
-              children: [
-                const SizedBox(width: 20.0),
-                CourseCard(
-                  title: "Taking Flutter to Web",
-                  image: Assets.course,
-                  description:
-                      "Flutter web is stable. But there are no proper courses focused on Flutter web. So, in this course we will learn what Flutter web is good for and we will build a production grade application along the way.",
-                  onActionPressed: () {},
-                ),
-                const SizedBox(width: 20.0),
-                CourseCard(
-                  title: "Flutter for Everyone",
-                  image: Assets.course,
-                  description:
-                      "Flutter beginners' course for everyone. For those who know basic programming, can easily start developing Flutter apps after taking this course.",
-                  onActionPressed: () {},
-                ),
-                // ... you can add more courses
-              ],
-            ),
+          Container(
+            height: 420,
+            child: const CoursesView(),
           ),
           Center(
             child: FeaturedSection(
