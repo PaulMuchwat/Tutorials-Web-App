@@ -1,7 +1,9 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_academy/app/view_models/theme_mode.vm.dart';
 import 'package:flutter_academy/main.dart';
 import 'package:flutter_academy/app/res/responsive.res.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class TopNav extends StatelessWidget {
   const TopNav({Key? key}) : super(key: key);
@@ -43,6 +45,24 @@ class TopNav extends StatelessWidget {
                 child: const Text("About"),
               ),
               TextButton(
+                onPressed: () {
+                  routerDelegate.go('/watchlist');
+                },
+                style: TextButton.styleFrom(
+                  foregroundColor: Colors.white,
+                ),
+                child: const Text("Watchlist"),
+              ),
+              TextButton(
+                style: TextButton.styleFrom(
+                  foregroundColor: Colors.white,
+                ),
+                onPressed: () {
+                  routerDelegate.go('/login');
+                },
+                child: const Text("Login"),
+              ),
+              TextButton(
                 style: TextButton.styleFrom(
                   foregroundColor: Colors.white,
                 ),
@@ -51,6 +71,20 @@ class TopNav extends StatelessWidget {
                 },
                 child: const Text("Contact"),
               ),
+              Consumer(builder: (context, ref, child) {
+                final themeModeVM = ref.watch(themeModeProvider);
+                return TextButton(
+                  style: TextButton.styleFrom(
+                    foregroundColor: Colors.white,
+                  ),
+                  onPressed: () {
+                    themeModeVM.toggleThemeMode();
+                  },
+                  child: Text(themeModeVM.themeMode == ThemeMode.dark
+                      ? "Light Theme"
+                      : "Dark Theme"),
+                );
+              })
             ],
     );
   }

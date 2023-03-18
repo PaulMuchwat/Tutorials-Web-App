@@ -1,7 +1,6 @@
 import 'package:flutter_academy/infrastructure/model/course.model.dart';
 import 'package:flutter_academy/infrastructure/res/watchlist.service.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
 import 'course.vm.dart';
 
 class WatchlistVM extends StateNotifier<List<CourseVM>> {
