@@ -74,7 +74,7 @@ class FeaturedSection extends StatelessWidget {
             Expanded(
               child: Image.asset(
                 image,
-                height: 450,
+                fit: BoxFit.cover,
               ),
             ),
           ],

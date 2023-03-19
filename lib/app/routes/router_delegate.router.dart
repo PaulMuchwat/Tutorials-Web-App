@@ -68,8 +68,7 @@ class AppRouterDelegate extends RouterDelegate<Uri>
       pages.add(const MaterialPage(child: HomePage(), key: ValueKey('home')));
     }
 
-    // ignore: prefer_is_empty
-    if (path.pathSegments.length == 0) {
+    if (path.pathSegments.isEmpty) {
       return pages;
     }
     switch (path.pathSegments[0]) {

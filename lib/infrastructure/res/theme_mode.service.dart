@@ -4,9 +4,7 @@ class ThemeModeService {
   static ThemeModeService? _instance;
   ThemeModeService._();
   static ThemeModeService get instance {
-    if (_instance == null) {
-      _instance = ThemeModeService._();
-    }
+    _instance ??= ThemeModeService._();
     return _instance!;
   }
 

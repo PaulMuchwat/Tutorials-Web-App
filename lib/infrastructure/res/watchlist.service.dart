@@ -7,9 +7,7 @@ class WatchlistService {
   WatchlistService._();
 
   static WatchlistService get instance {
-    if (_instance == null) {
-      _instance = WatchlistService._();
-    }
+    _instance ??= WatchlistService._();
     return _instance!;
   }
 

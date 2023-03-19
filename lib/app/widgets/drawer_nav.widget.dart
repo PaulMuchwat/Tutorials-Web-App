@@ -13,7 +13,7 @@ class DrawerNav extends StatelessWidget {
             color: Theme.of(context).primaryColor,
             padding: const EdgeInsets.all(16.0),
             child: Text(
-              "Flutter Academy",
+              "Fluttour Academy",
               style: Theme.of(context)
                   .textTheme
                   .titleLarge

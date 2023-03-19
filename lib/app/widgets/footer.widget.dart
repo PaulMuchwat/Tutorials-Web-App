@@ -57,7 +57,7 @@ class Footer extends StatelessWidget {
                     ? const EdgeInsets.only(left: 30.0)
                     : const EdgeInsets.all(0),
                 child: Text(
-                  "Flutter Academy",
+                  "Fluttour Academy",
                   style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                         color: Colors.white,
                       ),
@@ -71,7 +71,7 @@ class Footer extends StatelessWidget {
                     ? const EdgeInsets.only(right: 30.0)
                     : const EdgeInsets.only(bottom: 10),
                 child: Text(
-                  "© 2023 Flutter Academy",
+                  "© 2023 Fluttour Academy",
                   style: Theme.of(context).textTheme.titleLarge?.copyWith(
                         color: Colors.white,
                       ),

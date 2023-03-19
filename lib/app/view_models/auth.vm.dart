@@ -8,9 +8,9 @@ class AuthVM extends ChangeNotifier {
   UserVM? user;
 
   bool login({required String email, required String password}) {
-    if (email == 'test@email.com' && password == 'testpass') {
+    if (email == 'paul@mail.com' && password == '1234') {
       error = '';
-      user = UserVM(email: 'test@email.com', name: 'Test User');
+      user = UserVM(email: 'paul@mail.com', name: 'Paul');
       isLoggedIn = true;
       notifyListeners();
       return true;

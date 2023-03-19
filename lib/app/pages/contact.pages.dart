@@ -12,6 +12,10 @@ class ContactPage extends StatelessWidget {
       body: ListView(
         children: const <Widget>[
           TopNav(),
+          Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Text("Contact Page"),
+          )
         ],
       ),
       drawer: MediaQuery.of(context).size.width > ScreenSizes.md

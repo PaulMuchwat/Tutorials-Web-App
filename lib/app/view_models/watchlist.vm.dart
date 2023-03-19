@@ -1,10 +1,12 @@
+// ignore_for_file: unnecessary_this
+
 import 'package:flutter_academy/infrastructure/model/course.model.dart';
 import 'package:flutter_academy/infrastructure/res/watchlist.service.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'course.vm.dart';
 
 class WatchlistVM extends StateNotifier<List<CourseVM>> {
-  WatchlistService _watchlistService;
+  final WatchlistService _watchlistService;
 
   WatchlistVM(this._watchlistService) : super(const []) {
     getWatchlist();
@@ -30,7 +32,7 @@ class WatchlistVM extends StateNotifier<List<CourseVM>> {
   }
 
   bool isInWatchlist(int id) {
-    return this.state.where((element) => element.course.id == id).length != 0;
+    return this.state.where((element) => element.course.id == id).isNotEmpty;
   }
 }
 
