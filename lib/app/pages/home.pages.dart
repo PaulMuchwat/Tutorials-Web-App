@@ -27,9 +27,9 @@ class HomePage extends StatelessWidget {
                 style: Theme.of(context).textTheme.displaySmall),
           ),
           const SizedBox(height: 10.0),
-          Container(
+          const SizedBox(
             height: 420,
-            child: const CoursesView(),
+            child: CoursesView(),
           ),
           Center(
             child: FeaturedSection(

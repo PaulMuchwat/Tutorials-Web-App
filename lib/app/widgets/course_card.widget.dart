@@ -21,7 +21,7 @@ class CourseCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: 350.0,
       child: Card(
         clipBehavior: Clip.antiAlias,
