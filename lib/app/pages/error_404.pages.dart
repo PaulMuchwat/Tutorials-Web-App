@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_academy/main.dart';
 
 class Error404Page extends StatelessWidget {
   const Error404Page({super.key});
@@ -13,7 +14,7 @@ class Error404Page extends StatelessWidget {
             ElevatedButton(
               child: const Text('Go to Home'),
               onPressed: () {
-                Navigator.of(context).pushReplacementNamed('/');
+                routerDelegate.go('/');
               },
             )
           ],

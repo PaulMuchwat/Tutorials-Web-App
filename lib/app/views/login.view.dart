@@ -23,7 +23,7 @@ class _LoginViewState extends State<LoginView> {
         children: <Widget>[
           Text(
             "Login",
-            style: Theme.of(context).textTheme.headlineMedium,
+            style: Theme.of(context).textTheme.headline4,
           ),
           const SizedBox(height: 20.0),
           TextField(
@@ -39,6 +39,22 @@ class _LoginViewState extends State<LoginView> {
           Consumer(builder: (context, ref, child) {
             return ElevatedButton(
               onPressed: () async {
+                if (await ref
+                    .read(authVM)
+                    .login(email: _email.text, password: _password.text)) {
+                  //logged in
+                } else {
+                  // error
+                  debugPrint(ref.read(authVM).error);
+                }
+              },
+              child: const Text("Login"),
+            );
+          }),
+          const SizedBox(height: 10.0),
+          Consumer(builder: (context, ref, child) {
+            return ElevatedButton(
+              onPressed: () async {
                 if (await ref.read(authVM).anonymousLogin()) {
                   //logged in
                 } else {
@@ -48,7 +64,7 @@ class _LoginViewState extends State<LoginView> {
               },
               child: const Text("Anonymous Login"),
             );
-          })
+          }),
         ],
       ),
     );

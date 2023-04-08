@@ -1,40 +1,45 @@
-// ignore_for_file: unnecessary_this
-
-import 'package:flutter_academy/infrastructure/model/course.model.dart';
+import 'package:flutter_academy/app/view_models/auth.vm.dart';
 import 'package:flutter_academy/infrastructure/res/watchlist.service.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'course.vm.dart';
 
 class WatchlistVM extends StateNotifier<List<CourseVM>> {
-  final WatchlistService _watchlistService;
+  WatchlistService _watchlistService;
+  final String? userId;
 
-  WatchlistVM(this._watchlistService) : super(const []) {
+  WatchlistVM(this._watchlistService, {this.userId}) : super(const []) {
     getWatchlist();
   }
 
-  Future<void> addToWatchlist(int id, Course course) async {
-    await _watchlistService.addToWatchlist(id, course.toMap());
-    this.state = [CourseVM(course), ...this.state];
+  Future<void> addToWatchlist(String id) async {
+    if (userId == null) return;
+    await _watchlistService.addToWatchlist(id, userId!);
+    await getWatchlist();
   }
 
-  Future<void> removeFromWatchlist(int id) async {
-    await _watchlistService.removeFromWatchlist(id);
-    this.state = this.state.where((course) => course.course.id != id).toList();
+  Future<void> removeFromWatchlist(String id) async {
+    if (userId == null) return;
+    await _watchlistService.removeFromWatchlist(id, userId!);
+    state = state.where((course) => course.course.id != id).toList();
   }
 
   Future<void> getWatchlist() async {
-    final watchlist = await _watchlistService.getWatchlist();
+    if (userId == null) return;
+    final watchlist = await _watchlistService.getWatchlist(userId!);
     var courses = [];
     for (final course in watchlist) {
-      courses = [CourseVM(Course.fromMap(course)), ...this.state];
+      courses = [CourseVM(course), ...state];
     }
-    this.state = [...courses];
+    state = [...courses];
   }
 
-  bool isInWatchlist(int id) {
-    return this.state.where((element) => element.course.id == id).isNotEmpty;
+  bool isInWatchlist(String id) {
+    return state.where((element) => element.course.id == id).isNotEmpty;
   }
 }
 
-final watchlistVM = StateNotifierProvider<WatchlistVM, List<CourseVM>>(
-    (_) => WatchlistVM(WatchlistService.instance));
+final watchlistVM =
+    StateNotifierProvider<WatchlistVM, List<CourseVM>>((ref) => WatchlistVM(
+          WatchlistService.instance,
+          userId: ref.watch(authVM.notifier).user?.id,
+        ));
