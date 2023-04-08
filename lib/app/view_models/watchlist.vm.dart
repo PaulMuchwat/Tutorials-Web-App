@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'course.vm.dart';
 
 class WatchlistVM extends StateNotifier<List<CourseVM>> {
-  WatchlistService _watchlistService;
+  final WatchlistService _watchlistService;
   final String? userId;
 
   WatchlistVM(this._watchlistService, {this.userId}) : super(const []) {

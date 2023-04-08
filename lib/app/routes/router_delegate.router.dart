@@ -7,7 +7,6 @@ import 'package:flutter_academy/app/pages/course_details.pages.dart';
 import 'package:flutter_academy/app/pages/courses.pages.dart';
 import 'package:flutter_academy/app/pages/dashboard.page.dart';
 import 'package:flutter_academy/app/pages/error_404.pages.dart';
-import 'package:flutter_academy/app/pages/home.pages.dart';
 import 'package:flutter_academy/app/pages/login.page.dart';
 import 'package:flutter_academy/app/pages/watchlist.page.dart';
 import 'package:flutter_academy/app/view_models/auth.vm.dart';
@@ -61,12 +60,9 @@ class AppRouterDelegate extends RouterDelegate<Uri>
 
   List<Page> _getRoutes(Uri path, AuthVM authVM) {
     final pages = <Page>[];
-    if (authVM.isLoggedIn) {
-      pages.add(
-          const MaterialPage(child: DashboardPage(), key: ValueKey('home')));
-    } else {
-      pages.add(const MaterialPage(child: HomePage(), key: ValueKey('home')));
-    }
+
+    pages
+        .add(const MaterialPage(child: DashboardPage(), key: ValueKey('home')));
 
     if (path.pathSegments.isEmpty) {
       return pages;
