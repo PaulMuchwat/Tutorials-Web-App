@@ -91,6 +91,7 @@ class AuthVM extends ChangeNotifier {
 
   @override
   void dispose() {
+    super.dispose();
     _subscription?.cancel();
   }
 }
