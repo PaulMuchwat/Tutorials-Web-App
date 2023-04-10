@@ -1,13 +1,11 @@
-import 'package:appwrite/appwrite.dart';
-import 'package:flutter_academy/infrastructure/res/appwrite.service.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../model/course.model.dart';
 
 class WatchlistService {
   static WatchlistService? _instance;
-  final collectionId = 'watchlist';
-  final databaseId = 'flutter_academy_db';
-  final db = Databases(AppwriteService.instance.client);
+  final collectionId = 'courses';
+  final _db = FirebaseFirestore.instance;
 
   WatchlistService._();
 
@@ -17,44 +15,22 @@ class WatchlistService {
   }
 
   Future<void> addToWatchlist(String id, String userId) async {
-    db.createDocument(
-      databaseId: databaseId,
-      collectionId: collectionId,
-      documentId: 'unique()',
-      data: {
-        'userId': userId,
-        'courseId': id,
-      },
-      permissions: [
-        Permission.read(Role.user(userId)),
-        Permission.write(Role.user(userId))
-      ],
-    );
+    await _db.collection(collectionId).doc(id).update({
+      "watchlist": FieldValue.arrayUnion([userId])
+    });
   }
 
-  Future<void> removeFromWatchlist(String id) async {
-    final doc = await db.listDocuments(
-        databaseId: databaseId,
-        collectionId: collectionId,
-        queries: [Query.equal('courseId', id)]);
-    if (doc.total > 0) {
-      await db.deleteDocument(
-          databaseId: databaseId,
-          collectionId: collectionId,
-          documentId: doc.documents[0].$id);
-    }
+  Future<void> removeFromWatchlist(String id, String userId) async {
+    await _db.collection(collectionId).doc(id).update({
+      "watchlist": FieldValue.arrayRemove([userId])
+    });
   }
 
-  Future<List<Course>> getWatchlist() async {
-    final docList = await db.listDocuments(
-        databaseId: databaseId, collectionId: collectionId);
-    final docIds = docList.documents.map((doc) => doc.$id).toList();
-    final courseList = await db.listDocuments(
-      databaseId: databaseId,
-      collectionId: 'courses',
-      queries: [Query.equal('\$id', docIds)],
-    );
-    return courseList
-        .convertTo((p0) => Course.fromMap(Map<String, dynamic>.from(p0)));
+  Future<List<Course>> getWatchlist(String userId) async {
+    final qs = await _db
+        .collection(collectionId)
+        .where("watchlist", arrayContains: userId)
+        .get();
+    return qs.docs.map((doc) => Course.fromMap(doc.id, doc.data())).toList();
   }
 }
