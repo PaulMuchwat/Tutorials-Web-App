@@ -5,12 +5,15 @@ import 'package:flutter_academy/app/pages/about.pages.dart';
 import 'package:flutter_academy/app/pages/contact.pages.dart';
 import 'package:flutter_academy/app/pages/course_details.pages.dart';
 import 'package:flutter_academy/app/pages/courses.pages.dart';
-import 'package:flutter_academy/app/pages/dashboard.page.dart';
+// import 'package:flutter_academy/app/pages/dashboard.page.dart';
 import 'package:flutter_academy/app/pages/error_404.pages.dart';
 import 'package:flutter_academy/app/pages/login.page.dart';
 import 'package:flutter_academy/app/pages/watchlist.page.dart';
 import 'package:flutter_academy/app/view_models/auth.vm.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import '../pages/home.pages.dart';
+import '../pages/load.pages.dart';
 
 class AppRouterDelegate extends RouterDelegate<Uri>
     with ChangeNotifier, PopNavigatorRouterDelegateMixin<Uri> {
@@ -61,13 +64,18 @@ class AppRouterDelegate extends RouterDelegate<Uri>
   List<Page> _getRoutes(Uri path, AuthVM authVM) {
     final pages = <Page>[];
 
-    pages
-        .add(const MaterialPage(child: DashboardPage(), key: ValueKey('home')));
+    pages.add(const MaterialPage(child: HomePage(), key: ValueKey('home')));
 
     if (path.pathSegments.isEmpty) {
       return pages;
     }
     switch (path.pathSegments[0]) {
+      case 'load_courses':
+        pages.add(const MaterialPage(
+          child: LoadCourses(),
+          key: ValueKey('load_courses'),
+        ));
+        break;
       case 'contact':
         pages.add(const MaterialPage(
           key: ValueKey('contact'),
