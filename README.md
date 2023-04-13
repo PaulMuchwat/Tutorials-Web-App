@@ -1,6 +1,6 @@
 # Online Learning Platform
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/fda5654e-6547-4eec-916c-016667a5183c/deploy-status)](https://app.netlify.com/sites/incandescent-sunshine-a8c0c3/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/fda5654e-6547-4eec-916c-016667a5183c/deploy-status)](https://incandescent-sunshine-a8c0c3.netlify.app/#/)
 
 Web app built using the Flutter framework.
 
