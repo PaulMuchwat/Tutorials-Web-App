@@ -9,11 +9,11 @@ import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Hive.initFlutter();
-  runApp(ProviderScope(child: MyApp()));
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  await Hive.initFlutter();
+  runApp(ProviderScope(child: MyApp()));
 }
 
 final routerDelegate = AppRouterDelegate();
@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
           animation: themeModeVM,
           builder: (context, child) {
             return MaterialApp.router(
-              title: 'Flutter Demo',
+              title: 'Flutter Academy',
               debugShowCheckedModeBanner: false,
               theme: ThemeData(
                 primarySwatch: Colors.blue,

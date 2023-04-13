@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_academy/app/res/assets.res.dart';
 import 'package:flutter_academy/app/view_models/auth.vm.dart';
 import 'package:flutter_academy/app/view_models/watchlist.vm.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -31,7 +32,7 @@ class CourseCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Image.asset(
-                image,
+                Assets.course,
                 height: 150,
                 fit: BoxFit.cover,
               ),
