@@ -1,11 +1,11 @@
 {
-    "name": "flutter_academy",
-    "short_name": "flutter_academy",
+    "name": "Flutter Academy",
+    "short_name": "FA",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": " Flutter academy is an online learning platform where you can learn Flutter from absolute basics",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
