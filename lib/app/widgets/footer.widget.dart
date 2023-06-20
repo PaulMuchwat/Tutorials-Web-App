@@ -19,9 +19,9 @@ class Footer extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               if (width > ScreenSizes.md) const SizedBox(width: 20.0),
-              Column(
+              const Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
+                children: [
                   FooterLink("Home"),
                   FooterLink("About"),
                   FooterLink("Download Apps"),
@@ -29,18 +29,18 @@ class Footer extends StatelessWidget {
                 ],
               ),
               if (width > ScreenSizes.md) const Spacer(),
-              Column(
+              const Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
+                children: [
                   FooterLink("Blog"),
                   FooterLink("Help and Support"),
                   FooterLink("Join Us"),
                 ],
               ),
               if (width > ScreenSizes.md) const Spacer(),
-              Column(
+              const Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
+                children: [
                   FooterLink("Terms"),
                   FooterLink("Privacy Policy"),
                 ],
