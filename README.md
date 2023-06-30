@@ -1,6 +1,6 @@
 # Online Learning Platform
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/fda5654e-6547-4eec-916c-016667a5183c/deploy-status)](https://incandescent-sunshine-a8c0c3.netlify.app/#/)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/2d10a10a-895e-43e8-bb94-6d85c32db7fe/deploy-status)](https://app.netlify.com/sites/flutteracademyweb/deploys)
 
 Web app built using the Flutter framework.
 
